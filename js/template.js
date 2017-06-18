@@ -141,7 +141,7 @@ TrelloPowerUp.initialize({
 
     'authorization-status': function(t) {
         return new TrelloPowerUp.Promise((resolve) =>
-            resolve({ authorized: false })
+            resolve({ authorized: true })
         )
     },
 
