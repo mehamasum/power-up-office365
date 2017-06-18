@@ -128,6 +128,9 @@ function launchOneDrivePicker(t) {
                launchOneDrivePickerOAuth(t);
            }
            else {
+
+               //TODO: always returns DEFAULT :/
+
                t.get('board', 'private', KEY_ENDPOINT_HINT, DEFAULT)
                    .then(function (hint) {
                        launchOneDrivePickerWithToken(t, token, hint);
@@ -149,6 +152,7 @@ function launchOneDrivePickerOAuth(t){
             return t.attach({url: "https://office.com", name: "Test attachment"})
                 .then(function () {
 
+                    //TODO: doesn't work :/
                     // save `accessToken` and `endpointHint`
 
                     console.log(JSON.stringify(files["accessToken"]));
@@ -158,10 +162,13 @@ function launchOneDrivePickerOAuth(t){
                         KEY_ENDPOINT_HINT: files["apiEndpoint"]
                     })
                         .then(function () {
-                            t.get('board', 'private', KEY_ACCESS_TOKEN, DEFAULT)
+                            /*t.get('board', 'private', KEY_ACCESS_TOKEN, DEFAULT)
                                 .then(function (token) {
                                     console.log(token);
-                                });
+                                });*/
+
+                            t.closePopup();
+
                         })
                 })
 
@@ -169,10 +176,11 @@ function launchOneDrivePickerOAuth(t){
         },
         cancel: function() {
             /* cancel handler */
+            t.closePopup();
         },
         error: function(e) {
             /* error handler */
-
+            t.closePopup();
         }
     };
 
