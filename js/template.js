@@ -157,7 +157,7 @@ function launchOneDrivePickerOAuth(t){
                         KEY_ACCESS_TOKEN: files["accessToken"],
                         KEY_ENDPOINT_HINT: files["apiEndpoint"]
                     })
-                        .the(function () {
+                        .then(function () {
                             t.get('board', 'private', KEY_ACCESS_TOKEN, DEFAULT)
                                 .then(function (token) {
                                     console.log(token);

@@ -57,19 +57,19 @@
       <file leaf-file-name="template.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/template.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="961">
-              <caret line="161" column="53" lean-forward="false" selection-start-line="161" selection-start-column="53" selection-end-line="161" selection-end-column="53" />
+            <state relative-caret-position="443">
+              <caret line="159" column="29" lean-forward="false" selection-start-line="159" selection-start-column="29" selection-end-line="159" selection-end-column="29" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
                 <element signature="e#281#756#0" expanded="false" />
                 <element signature="e#788#2558#0" expanded="false" />
                 <element signature="e#2598#2884#0" expanded="false" />
                 <element signature="e#2926#3849#0" expanded="false" />
-                <element signature="e#8657#10088#0" expanded="false" />
-                <element signature="e#10140#10770#0" expanded="false" />
-                <element signature="e#11176#11212#0" expanded="false" />
-                <element signature="e#11257#11526#0" expanded="false" />
-                <element signature="e#11568#11813#0" expanded="false" />
+                <element signature="e#8658#10089#0" expanded="false" />
+                <element signature="e#10141#10771#0" expanded="false" />
+                <element signature="e#11177#11213#0" expanded="false" />
+                <element signature="e#11258#11527#0" expanded="false" />
+                <element signature="e#11569#11814#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -309,12 +309,12 @@
       <updated>1497724185823</updated>
       <workItem from="1497724188361" duration="2888000" />
       <workItem from="1497760313940" duration="1287000" />
-      <workItem from="1497766852370" duration="18790000" />
+      <workItem from="1497766852370" duration="18963000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="22965000" />
+    <option name="totallyTimeSpent" value="23138000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-14" y="-14" width="2764" height="1762" extended-state="6" />
@@ -490,19 +490,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/template.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="961">
-          <caret line="161" column="53" lean-forward="false" selection-start-line="161" selection-start-column="53" selection-end-line="161" selection-end-column="53" />
+        <state relative-caret-position="443">
+          <caret line="159" column="29" lean-forward="false" selection-start-line="159" selection-start-column="29" selection-end-line="159" selection-end-column="29" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="e#281#756#0" expanded="false" />
             <element signature="e#788#2558#0" expanded="false" />
             <element signature="e#2598#2884#0" expanded="false" />
             <element signature="e#2926#3849#0" expanded="false" />
-            <element signature="e#8657#10088#0" expanded="false" />
-            <element signature="e#10140#10770#0" expanded="false" />
-            <element signature="e#11176#11212#0" expanded="false" />
-            <element signature="e#11257#11526#0" expanded="false" />
-            <element signature="e#11568#11813#0" expanded="false" />
+            <element signature="e#8658#10089#0" expanded="false" />
+            <element signature="e#10141#10771#0" expanded="false" />
+            <element signature="e#11177#11213#0" expanded="false" />
+            <element signature="e#11258#11527#0" expanded="false" />
+            <element signature="e#11569#11814#0" expanded="false" />
           </folding>
         </state>
       </provider>
