@@ -84,7 +84,6 @@ var boardButtonCallback = function (t) {
         title: 'Popup List Example',
         items: [
             {
-                icon: GRAY_ICON,
                 text: 'Open Overlay',
                 callback: function (t) {
                     return t.overlay({
@@ -97,7 +96,6 @@ var boardButtonCallback = function (t) {
                 }
             },
             {
-                icon: GRAY_ICON,
                 text: 'Open Board Bar',
                 callback: function (t) {
                     return t.boardBar({
@@ -140,6 +138,39 @@ var cardButtonCallback = function (t) {
 };
 
 TrelloPowerUp.initialize({
+
+    'authorization-status': function(t) {
+        return new TrelloPowerUp.Promise((resolve) =>
+            resolve({ authorized: false })
+        )
+    },
+
+    'show-authorization': function(t) {
+        t.popup({
+            title: 'My Auth Popup',
+            url: './onedrive/index.html',
+            height: 500
+        })
+    },
+
+    'show-settings': function (t, options) {
+        return t.popup({
+            title: 'Settings',
+            url: './settings.html',
+            height: 184
+        });
+    },
+
+    // Allows you to add one or more buttons on the right side of the back of cards
+    // Each button should have { icon, text, callback -> method }
+    'card-buttons': function (t, options) {
+        return [{
+            icon: GRAY_ICON,
+            text: 'Office 365',
+            callback: cardButtonCallback
+        }];
+    },
+
     'attachment-sections': function (t, options) {
         // options.entries is a list of the attachments for this card
         // you can look through them and 'claim' any that you want to
@@ -206,16 +237,6 @@ TrelloPowerUp.initialize({
         return getBadges(t);
     },
 
-    // Allows you to add one or more buttons on the right side of the back of cards
-    // Each button should have { icon, text, callback -> method }
-    'card-buttons': function (t, options) {
-        return [{
-            icon: GRAY_ICON,
-            text: 'Office 365',
-            callback: cardButtonCallback
-        }];
-    },
-
     'card-detail-badges': function (t, options) {
         return getBadges(t);
     },
@@ -240,12 +261,5 @@ TrelloPowerUp.initialize({
         } else {
             throw t.NotHandled();
         }
-    },
-    'show-settings': function (t, options) {
-        return t.popup({
-            title: 'Settings',
-            url: './settings.html',
-            height: 184
-        });
     }
 });
