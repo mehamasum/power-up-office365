@@ -1,0 +1,4 @@
+,
+    "show-settings",
+    "authorization-status",
+    "show-authorization"

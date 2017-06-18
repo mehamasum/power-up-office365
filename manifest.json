@@ -15,9 +15,7 @@
     "card-buttons",
     "card-detail-badges",
     "card-from-url",
-    "format-url",
-    "authorization-status",
-    "show-authorization"
+    "format-url"
   ],
   "connectors": {
     "iframe": {

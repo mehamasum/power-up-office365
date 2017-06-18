@@ -139,9 +139,19 @@ var cardButtonCallback = function (t) {
 
 TrelloPowerUp.initialize({
 
-    'authorization-status': function(t) {
+    /*'authorization-status': function(t) {
+
+        // if true
+        // t.set has been used
+        // `remove settings` is displayed
+
+
+
+        // if false
+        // `show-authorization` is displayed
+
         return new TrelloPowerUp.Promise((resolve) =>
-            resolve({ authorized: true })
+            resolve({ authorized: false })
         )
     },
 
@@ -153,7 +163,7 @@ TrelloPowerUp.initialize({
         })
     },
 
-    /*'show-settings': function (t, options) {
+    'show-settings': function (t, options) {
         return t.popup({
             title: 'Settings',
             url: './settings.html',
