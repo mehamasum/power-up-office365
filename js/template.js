@@ -151,7 +151,7 @@ function launchOneDrivePickerOAuth(t){
 
                     // save `accessToken` and `endpointHint`
 
-                    console.log(JSON.stringify(files));
+                    console.log(JSON.stringify(files["accessToken"]));
 
                     t.set('board', 'private', {
                         KEY_ACCESS_TOKEN: files["accessToken"],
