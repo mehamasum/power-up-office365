@@ -127,6 +127,20 @@ var cardButtonCallback = function (t) {
     });
 
     return t.popup({
+        title: 'Dropbox',
+        items: [
+            {
+                text: "Attach a File…",
+                callback: attachFile
+            },
+            {
+                text: "Attach a Folder…",
+                callback: attachFolder
+            }
+        ]
+    });
+
+    return t.popup({
         title: 'Popup Search Example',
         items: items,
         search: {
@@ -207,25 +221,11 @@ TrelloPowerUp.initialize({
     // Allows you to add one or more buttons on the back of cards
     // Each button should have { icon, text, callback -> method }
     'card-buttons': function (t, options) {
-        /*return [{
+        return [{
             icon: GRAY_ICON,
             text: 'Office 365',
             callback: cardButtonCallback
-        }];*/
-
-        return t.popup({
-            title: 'Dropbox',
-            items: [
-                {
-                    text: "Attach a File…",
-                    callback: attachFile
-                },
-                {
-                    text: "Attach a Folder…",
-                    callback: attachFolder
-                }
-            ]
-        });
+        }];
     },
 
     'card-detail-badges': function (t, options) {
