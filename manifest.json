@@ -15,7 +15,10 @@
     "card-buttons",
     "card-detail-badges",
     "card-from-url",
-    "format-url"
+    "format-url",
+    "show-settings",
+    "authorization-status",
+    "show-authorization"
   ],
   "connectors": {
     "iframe": {

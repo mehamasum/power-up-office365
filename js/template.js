@@ -2,6 +2,11 @@
 
 var WHITE_ICON = './images/icon-white.svg';
 var GRAY_ICON = './images/icon-gray.svg';
+var APP_ID = '380ed9c5-4e06-4b73-b2e0-115ab3810cb8';
+var DEFAULT = "XXX";
+
+var KEY_ACCESS_TOKEN = "accessToken";
+var KEY_ENDPOINT_HINT= "endpointHint";
 
 var parkMap = {
     acad: 'Acadia National Park',
@@ -111,8 +116,83 @@ var boardButtonCallback = function (t) {
     });
 };
 
+
+function launchOneDrivePicker(t) {
+    // check which one to call
+    t.get('board', 'private', KEY_ACCESS_TOKEN, DEFAULT)
+        .then(function (token) {
+           if(token===DEFAULT) {
+               launchOneDrivePickerOAuth(t);
+           }
+           else {
+               t.get('board', 'private', KEY_ENDPOINT_HINT, DEFAULT)
+                   .then(function (hint) {
+                       launchOneDrivePickerWithToken(t, token, hint);
+                   });
+           }
+        });
+}
+
+
+function launchOneDrivePickerOAuth(t){
+    var odOptions = {
+        clientId: APP_ID,
+        action: "share",
+        multiSelect: true,
+        advanced: {},
+        success: function(files) {
+            /* success handler */
+
+            return t.attach({url: "https://office.com", name: "Test attachment"})
+                .then(function () {
+
+                    // save `accessToken` and `endpointHint`
+
+                    t.set('board', 'private', KEY_ACCESS_TOKEN, files.accessToken);
+                    t.set('board', 'private', KEY_ENDPOINT_HINT, files.apiEndpoint);
+                })
+
+
+        },
+        cancel: function() {
+            /* cancel handler */
+        },
+        error: function(e) {
+            /* error handler */
+
+        }
+    };
+
+    OneDrive.open(odOptions);
+}
+
+
+function launchOneDrivePickerWithToken(t, token, hint){
+    var odOptions = {
+        clientId: APP_ID,
+        action: "share",
+        multiSelect: true,
+        advanced: {
+            accessToken: token,
+            endpointHint: hint
+        },
+        success: function(files) {
+            /* success handler */
+        },
+        cancel: function() {
+            /* cancel handler */
+        },
+        error: function(e) {
+            /* error handler */
+
+        }
+    };
+
+    OneDrive.open(odOptions);
+}
+
 var cardButtonCallback = function (t) {
-    var items = Object.keys(parkMap).map(function (parkCode) {
+    /*var items = Object.keys(parkMap).map(function (parkCode) {
         var urlForCode = 'http://www.nps.gov/' + parkCode + '/';
         return {
             text: parkMap[parkCode],
@@ -134,12 +214,50 @@ var cardButtonCallback = function (t) {
             placeholder: 'Search National Parks',
             empty: 'No parks found'
         }
+    });*/
+
+
+    var attachFile = function(t) {
+        /*return t.overlay({
+            url: 'attach.html'
+        })
+        .then(function(){
+            return t.closePopup();
+        })*/
+
+        launchOneDrivePicker(t);
+    };
+
+    var attachFolder = function(t) {
+        /*return t.overlay({
+            url: 'attach-folder.html'
+        })
+        .then(function(){
+            return t.closePopup();
+        })*/
+    };
+
+    return t.popup({
+        title: 'Office 365',
+        items: [
+            {
+                text: "Attach OneDrive File",
+                callback: attachFile
+            },
+            {
+                text: "Attach OneDrive Folder",
+                callback: attachFolder
+            }
+        ]
     });
+
+
+
 };
 
 TrelloPowerUp.initialize({
 
-    /*'authorization-status': function(t) {
+    'authorization-status': function(t) {
 
         // if true
         // t.set has been used
@@ -169,7 +287,7 @@ TrelloPowerUp.initialize({
             url: './settings.html',
             height: 184
         });
-    },*/
+    },
 
     // Allows you to add one or more buttons on the right side of the back of cards
     // Each button should have { icon, text, callback -> method }
