@@ -127,20 +127,6 @@ var cardButtonCallback = function (t) {
     });
 
     return t.popup({
-        title: 'Dropbox',
-        items: [
-            {
-                text: "Attach a File…",
-                callback: attachFile
-            },
-            {
-                text: "Attach a Folder…",
-                callback: attachFolder
-            }
-        ]
-    });
-
-    return t.popup({
         title: 'Popup Search Example',
         items: items,
         search: {
