@@ -121,6 +121,9 @@ function launchOneDrivePicker(t) {
     // check which one to call
     t.get('board', 'private', KEY_ACCESS_TOKEN, DEFAULT)
         .then(function (token) {
+
+            console.log(token);
+
            if(token===DEFAULT) {
                launchOneDrivePickerOAuth(t);
            }
