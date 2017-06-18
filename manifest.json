@@ -3,9 +3,9 @@
   "description": "",
   "details": "Office 365 Beta Power Up to boost your Trello experience",
   "icon": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/d/dd/Microsoft_Office_2013_logo.svg"
+    "url": "./images/icon.svg"
   },
-  "author": "Trello Inc",
+  "author": "Meha Masum",
   "capabilities": [
     "attachment-sections",
     "attachment-thumbnail",
