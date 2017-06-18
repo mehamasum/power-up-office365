@@ -153,13 +153,13 @@ TrelloPowerUp.initialize({
         })
     },
 
-    'show-settings': function (t, options) {
+    /*'show-settings': function (t, options) {
         return t.popup({
             title: 'Settings',
             url: './settings.html',
             height: 184
         });
-    },
+    },*/
 
     // Allows you to add one or more buttons on the right side of the back of cards
     // Each button should have { icon, text, callback -> method }
