@@ -84,6 +84,7 @@ var boardButtonCallback = function (t) {
         title: 'Popup List Example',
         items: [
             {
+                icon: GRAY_ICON,
                 text: 'Open Overlay',
                 callback: function (t) {
                     return t.overlay({
@@ -96,6 +97,7 @@ var boardButtonCallback = function (t) {
                 }
             },
             {
+                icon: GRAY_ICON,
                 text: 'Open Board Bar',
                 callback: function (t) {
                     return t.boardBar({
@@ -204,7 +206,7 @@ TrelloPowerUp.initialize({
         return getBadges(t);
     },
 
-    // Allows you to add one or more buttons on the back of cards
+    // Allows you to add one or more buttons on the right side of the back of cards
     // Each button should have { icon, text, callback -> method }
     'card-buttons': function (t, options) {
         return [{
