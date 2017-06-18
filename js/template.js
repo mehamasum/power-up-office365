@@ -153,8 +153,16 @@ function launchOneDrivePickerOAuth(t){
 
                     console.log(JSON.stringify(files));
 
-                    t.set('board', 'private', KEY_ACCESS_TOKEN, files.accessToken);
-                    t.set('board', 'private', KEY_ENDPOINT_HINT, files.apiEndpoint);
+                    t.set('board', 'private', {
+                        KEY_ACCESS_TOKEN: files.accessToken,
+                        KEY_ENDPOINT_HINT: files.apiEndpoint
+                    })
+                        .the(function () {
+                            t.get('board', 'private', KEY_ACCESS_TOKEN, DEFAULT)
+                                .then(function (hint) {
+                                    console.log(token);
+                                });
+                        })
                 })
 
 
