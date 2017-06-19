@@ -251,7 +251,10 @@ var cardButtonCallback = function (t) {
         // test: set
 
 
-        t.set('board', 'private', KEY_ACCESS_TOKEN, "AAA");
+        t.set('board', 'private', {
+            KEY_ACCESS_TOKEN: "AAA",
+            KEY_ENDPOINT_HINT: "BBB"
+        });
 
     };
 
