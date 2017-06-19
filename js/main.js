@@ -251,10 +251,9 @@ var cardButtonCallback = function (t) {
         // test: set
 
 
-        return t.set('board', 'private', {
-            KEY_ACCESS_TOKEN: "AAAAAA",
-            KEY_ENDPOINT_HINT: "BBB"
-        })
+        return t.set('board', 'private',
+            KEY_ACCESS_TOKEN, "AAAAAA"
+        )
             .then(function () {
                 return t.get('board', 'private', KEY_ACCESS_TOKEN, DEFAULT);
             })
@@ -277,10 +276,9 @@ var cardButtonCallback = function (t) {
         return t.get('board', 'private', KEY_ACCESS_TOKEN, DEFAULT)
             .then(function (token) {
                 console.log(token);
-                return t.set('board', 'private', {
-                    KEY_ACCESS_TOKEN: "PPP",
-                    KEY_ENDPOINT_HINT: "QQQ"
-                });
+                return t.set('board', 'private',
+                    KEY_ACCESS_TOKEN, "PPP"
+                );
 
             })
             .then(function () {
