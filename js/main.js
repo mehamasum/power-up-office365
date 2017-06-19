@@ -251,18 +251,17 @@ var cardButtonCallback = function (t) {
         // test: set
 
 
-        t.set('board', 'private', {
+        return t.set('board', 'private', {
             KEY_ACCESS_TOKEN: "AAA",
             KEY_ENDPOINT_HINT: "BBB"
-        }).then(function () {
-                t.get('board', 'private', KEY_ACCESS_TOKEN, DEFAULT)
-                    .then(function (token) {
-                        console.log(token);
-                        return t.closePopup();
-                    });
-
-
+        })
+            .then(function () {
+                return t.get('board', 'private', KEY_ACCESS_TOKEN, DEFAULT);
             })
+            .then(function (token) {
+                console.log(token);
+                return t.closePopup();
+            });
 
     };
 
@@ -275,21 +274,21 @@ var cardButtonCallback = function (t) {
         })*/
 
 
-        t.get('board', 'private', KEY_ACCESS_TOKEN, DEFAULT)
+        return t.get('board', 'private', KEY_ACCESS_TOKEN, DEFAULT)
             .then(function (token) {
                 console.log(token);
-                t.set('board', 'private', {
+                return t.set('board', 'private', {
                     KEY_ACCESS_TOKEN: "PPP",
                     KEY_ENDPOINT_HINT: "QQQ"
-                }).then(function () {
-                    t.get('board', 'private', KEY_ACCESS_TOKEN, DEFAULT)
-                        .then(function (new_token) {
-                            console.log(new_token);
-                            return t.closePopup();
-                        });
-
                 });
 
+            })
+            .then(function () {
+                return t.get('board', 'private', KEY_ACCESS_TOKEN, DEFAULT)
+            })
+            .then(function (new_token) {
+                console.log(new_token);
+                t.closePopup();
             });
 
 
