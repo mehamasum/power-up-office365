@@ -258,8 +258,7 @@ var cardButtonCallback = function (t) {
                 t.get('board', 'private', KEY_ACCESS_TOKEN, DEFAULT)
                     .then(function (token) {
                         console.log(token);
-                        t.closePopup();
-
+                        return t.closePopup();
                     });
 
 
@@ -286,8 +285,7 @@ var cardButtonCallback = function (t) {
                     t.get('board', 'private', KEY_ACCESS_TOKEN, DEFAULT)
                         .then(function (token) {
                             console.log(token);
-                            t.closePopup();
-
+                            return t.closePopup();
                         });
 
                 });
