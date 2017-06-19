@@ -283,8 +283,8 @@ var cardButtonCallback = function (t) {
                     KEY_ENDPOINT_HINT: "QQQ"
                 }).then(function () {
                     t.get('board', 'private', KEY_ACCESS_TOKEN, DEFAULT)
-                        .then(function (token) {
-                            console.log(token);
+                        .then(function (new_token) {
+                            console.log(new_token);
                             return t.closePopup();
                         });
 
