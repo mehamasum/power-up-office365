@@ -254,7 +254,15 @@ var cardButtonCallback = function (t) {
         t.set('board', 'private', {
             KEY_ACCESS_TOKEN: "AAA",
             KEY_ENDPOINT_HINT: "BBB"
-        });
+        }).then(function () {
+                t.get('board', 'private', KEY_ACCESS_TOKEN, DEFAULT)
+                    .then(function (token) {
+                        console.log(token);
+                    });
+
+                t.closePopup();
+
+            })
 
     };
 
@@ -265,6 +273,19 @@ var cardButtonCallback = function (t) {
         .then(function(){
             return t.closePopup();
         })*/
+
+        t.set('board', 'private', {
+            KEY_ACCESS_TOKEN: "PPP",
+            KEY_ENDPOINT_HINT: "QQQ"
+        }).then(function () {
+            t.get('board', 'private', KEY_ACCESS_TOKEN, DEFAULT)
+                .then(function (token) {
+                    console.log(token);
+                });
+
+            t.closePopup();
+
+        })
 
         // test: get
         t.get('board', 'private', KEY_ACCESS_TOKEN, DEFAULT)
