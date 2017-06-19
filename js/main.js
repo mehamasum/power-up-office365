@@ -258,9 +258,10 @@ var cardButtonCallback = function (t) {
                 t.get('board', 'private', KEY_ACCESS_TOKEN, DEFAULT)
                     .then(function (token) {
                         console.log(token);
+                        t.closePopup();
+
                     });
 
-                t.closePopup();
 
             })
 
@@ -274,24 +275,25 @@ var cardButtonCallback = function (t) {
             return t.closePopup();
         })*/
 
-        t.set('board', 'private', {
-            KEY_ACCESS_TOKEN: "PPP",
-            KEY_ENDPOINT_HINT: "QQQ"
-        }).then(function () {
-            t.get('board', 'private', KEY_ACCESS_TOKEN, DEFAULT)
-                .then(function (token) {
-                    console.log(token);
-                });
 
-            t.closePopup();
-
-        })
-
-        // test: get
         t.get('board', 'private', KEY_ACCESS_TOKEN, DEFAULT)
             .then(function (token) {
                 console.log(token);
+                t.set('board', 'private', {
+                    KEY_ACCESS_TOKEN: "PPP",
+                    KEY_ENDPOINT_HINT: "QQQ"
+                }).then(function () {
+                    t.get('board', 'private', KEY_ACCESS_TOKEN, DEFAULT)
+                        .then(function (token) {
+                            console.log(token);
+                            t.closePopup();
+
+                        });
+
+                });
+
             });
+
 
     };
 
