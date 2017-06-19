@@ -162,10 +162,10 @@ function launchOneDrivePickerOAuth(t){
                         KEY_ENDPOINT_HINT: files["apiEndpoint"]
                     })
                         .then(function () {
-                            /*t.get('board', 'private', KEY_ACCESS_TOKEN, DEFAULT)
+                            t.get('board', 'private', KEY_ACCESS_TOKEN, DEFAULT)
                                 .then(function (token) {
                                     console.log(token);
-                                });*/
+                                });
 
                             t.closePopup();
 
@@ -246,7 +246,13 @@ var cardButtonCallback = function (t) {
             return t.closePopup();
         })*/
 
-        launchOneDrivePicker(t);
+        //launchOneDrivePicker(t);
+
+        // test: set
+
+
+        t.set('board', 'private', KEY_ACCESS_TOKEN, "AAA");
+
     };
 
     var attachFolder = function(t) {
@@ -256,6 +262,13 @@ var cardButtonCallback = function (t) {
         .then(function(){
             return t.closePopup();
         })*/
+
+        // test: get
+        t.get('board', 'private', KEY_ACCESS_TOKEN, DEFAULT)
+            .then(function (token) {
+                console.log(token);
+            });
+
     };
 
     return t.popup({
