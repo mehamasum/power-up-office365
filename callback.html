@@ -8,6 +8,8 @@
             src="https://code.jquery.com/jquery-2.2.4.min.js"
             integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
             crossorigin="anonymous"></script>
+
+    <script src="./lib/auth-client.js"></script>
 </head>
 <body>
 <h1 style="text-align:center">You're set!</h1>
@@ -32,8 +34,7 @@
 
     if(code) {
         // get access_token, refresh_token with code
-        const authClient = require('./lib/auth-client');
-        authClient.requestAccessToken("AUTH_CODE", code,
+        new AuthClient().requestAccessToken("AUTH_CODE", code,
 
             function (responseData) {
                 var accessToken = responseData['access_token'],

@@ -298,7 +298,7 @@ var cardButtonCallback = function (t) {
     var authUser = function () {
 
         // open popup
-        const authClient = require('./lib/auth-client');
+        const authClient = new AuthClient();
         window.authUrl = authClient.getAuthUrl();
 
         var isValidToken = function(token) { return true; };
