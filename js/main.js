@@ -298,12 +298,12 @@ var cardButtonCallback = function (t) {
     };
 
 
-    t.get('board', 'private', KEY_ACCESS_TOKEN, DEFAULT)
+    return t.get('board', 'private', KEY_ACCESS_TOKEN, DEFAULT)
         .then(function (token) {
             console.log(token);
 
             if(token===DEFAULT) { //no token, prompt for auth
-                t.popup({
+                return t.popup({
                     title: 'Office PowerPack',
                     items: [
                         {
@@ -316,7 +316,7 @@ var cardButtonCallback = function (t) {
             }
             else { //already authorized, regular functions
 
-                t.popup({
+                return t.popup({
                     title: 'Office PowerPack',
                     items: [
                         {
