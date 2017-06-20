@@ -292,21 +292,46 @@ var cardButtonCallback = function (t) {
 
     };
 
-    return t.popup({
-        title: 'Office 365',
-        items: [
-            {
-                text: "Attach OneDrive File",
-                callback: attachFile
-            },
-            {
-                text: "Attach OneDrive Folder",
-                callback: attachFolder
+
+    var authUser = function () {
+
+    };
+
+
+    t.get('board', 'private', KEY_ACCESS_TOKEN, DEFAULT)
+        .then(function (token) {
+            console.log(token);
+
+            if(token===DEFAULT) { //no token, prompt for auth
+                return t.popup({
+                    title: 'Office PowerPack',
+                    items: [
+                        {
+                            text: "Attach OneDrive File",
+                            callback: authUser
+                        }
+                    ]
+                });
+
             }
-        ]
-    });
+            else { //already authorized, regular functions
 
+                return t.popup({
+                    title: 'Office PowerPack',
+                    items: [
+                        {
+                            text: "Attach OneDrive File",
+                            callback: attachFile
+                        },
+                        {
+                            text: "Attach OneDrive Folder",
+                            callback: attachFolder
+                        }
+                    ]
+                });
+            }
 
+        });
 
 };
 
