@@ -393,26 +393,46 @@ TrelloPowerUp.initialize({
 
     'authorization-status': function(t) {
 
-        // if true
-        // t.set has been used
-        // `remove settings` is displayed
+        return t.get('board', 'private', KEY_ACCESS_TOKEN, DEFAULT)
+            .then(function (token) {
+                console.log(token);
 
+                if(token===DEFAULT) {
 
+                    // if false
+                    // `show-authorization` is displayed
+                    return new TrelloPowerUp.Promise((resolve) =>
+                        resolve({ authorized: false })
+                    )
+                }
+                else {
 
-        // if false
-        // `show-authorization` is displayed
+                    // if true
+                    // t.set has been used
+                    // `remove settings` is displayed
 
-        return new TrelloPowerUp.Promise((resolve) =>
-            resolve({ authorized: false })
-        )
+                    return new TrelloPowerUp.Promise((resolve) =>
+                        resolve({ authorized: true })
+                    )
+
+                }
+
+            });
+
     },
 
     'show-authorization': function(t) {
-        t.popup({
-            title: 'My Auth Popup',
-            url: './onedrive/index.html',
-            height: 500
-        })
+        return t.popup({
+            title: 'Authorize',
+            items: [
+                {
+                    text: "Connect Microsoft or Office 365 Account",
+                    callback: function () {
+                        console.log("TODO settings auth");
+                    }
+                }
+            ]
+        });
     },
 
     'show-settings': function (t, options) {

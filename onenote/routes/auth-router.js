@@ -49,4 +49,43 @@ router.get('/callback', function (req, res) {
 });
 
 
+router.get('/callback2', function (req, res) {
+    debug('get redirect callback');
+    // Get the auth code from the callback url query parameters
+    var authCode = req.query['code'];
+
+    if (authCode) {
+        // Request an access token from the auth code
+        authClient.requestAccessTokenByAuthCode(authCode,
+            function (responseData) {
+                var accessToken = responseData['access_token'],
+                    refreshToken = responseData['refresh_token'],
+                    expiresIn = responseData['expires_in'];
+                if (accessToken && refreshToken && expiresIn) {
+                    // send back to parent
+                    if (window.opener) {
+                        console.log("requestAccessToken with AUTH_CODE called window.opener.authorize");
+                        window.opener.authorize(accessToken, refreshToken, expiresIn);
+                        /*setTimeout(function () {
+                            window.close();
+                        }, 10000);*/
+                    }
+
+                }
+
+                else {
+                    // Handle an authentication error response
+                    console.log("requestAccessToken with AUTH_CODE failed");
+                }
+            });
+    } else {
+        // Handle an error passed from the callback query params
+        var authError = req.query['error'],
+            authErrorDescription = req.query['error_description'];
+        console.log("AUTH_CODE error "+ authErrorDescription);
+
+    }
+});
+
+
 module.exports = router;
