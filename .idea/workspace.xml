@@ -2,10 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c5a20f54-0f60-4ac4-8ca3-c80f3872e0d9" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/config.js" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/callback.html" afterPath="$PROJECT_DIR$/callback.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/main.js" afterPath="$PROJECT_DIR$/js/main.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/auth-client.js" afterPath="$PROJECT_DIR$/lib/auth-client.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -49,11 +45,11 @@
       <file leaf-file-name="auth-client.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lib/auth-client.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="296">
-              <caret line="8" column="6" lean-forward="false" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
+            <state relative-caret-position="185">
+              <caret line="5" column="16" lean-forward="false" selection-start-line="5" selection-start-column="16" selection-end-line="5" selection-end-column="16" />
               <folding>
-                <element signature="e#773#1016#0" expanded="false" />
-                <element signature="e#1221#1790#0" expanded="false" />
+                <element signature="e#691#934#0" expanded="false" />
+                <element signature="e#1139#1708#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -112,10 +108,10 @@
         <option value="$PROJECT_DIR$/onenote/config.js" />
         <option value="$PROJECT_DIR$/js/util.js" />
         <option value="$PROJECT_DIR$/lib/config.js" />
-        <option value="$PROJECT_DIR$/lib/auth-client.js" />
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/js/main.js" />
         <option value="$PROJECT_DIR$/callback.html" />
+        <option value="$PROJECT_DIR$/lib/auth-client.js" />
       </list>
     </option>
   </component>
@@ -310,12 +306,12 @@
       <workItem from="1497878733777" duration="5825000" />
       <workItem from="1497898378438" duration="6060000" />
       <workItem from="1497934529464" duration="2023000" />
-      <workItem from="1497937222902" duration="7242000" />
+      <workItem from="1497937222902" duration="7365000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="50948000" />
+    <option name="totallyTimeSpent" value="51071000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-14" y="-14" width="2764" height="1762" extended-state="6" />
@@ -558,6 +554,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -757,11 +754,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/auth-client.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="296">
-          <caret line="8" column="6" lean-forward="false" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
+        <state relative-caret-position="185">
+          <caret line="5" column="16" lean-forward="false" selection-start-line="5" selection-start-column="16" selection-end-line="5" selection-end-column="16" />
           <folding>
-            <element signature="e#773#1016#0" expanded="false" />
-            <element signature="e#1221#1790#0" expanded="false" />
+            <element signature="e#691#934#0" expanded="false" />
+            <element signature="e#1139#1708#0" expanded="false" />
           </folding>
         </state>
       </provider>
