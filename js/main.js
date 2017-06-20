@@ -303,7 +303,7 @@ var cardButtonCallback = function (t) {
             console.log(token);
 
             if(token===DEFAULT) { //no token, prompt for auth
-                return t.popup({
+                t.popup({
                     title: 'Office PowerPack',
                     items: [
                         {
@@ -316,7 +316,7 @@ var cardButtonCallback = function (t) {
             }
             else { //already authorized, regular functions
 
-                return t.popup({
+                t.popup({
                     title: 'Office PowerPack',
                     items: [
                         {
