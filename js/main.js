@@ -7,6 +7,8 @@ var DEFAULT = "XXX";
 
 var KEY_ACCESS_TOKEN = "accessToken";
 var KEY_ENDPOINT_HINT= "endpointHint";
+var KEY_REFRESH_TOKEN = "refreshToken";
+var KEY_EXPIRES_IN = "expiresIn";
 
 var parkMap = {
     acad: 'Acadia National Park',
@@ -295,6 +297,58 @@ var cardButtonCallback = function (t) {
 
     var authUser = function () {
 
+        // open popup
+        const authClient = require('./lib/auth-client');
+        window.authUrl = authClient.getAuthUrl();
+
+        var isValidToken = function(token) { return true; };
+        window.authorize = function(access_token, refresh_token, expires_in) {
+
+            //if (token && isValidToken(token))
+            {
+                delete window.authorize;
+
+
+                //save(token);
+                return t.set('board', 'private',
+                    KEY_ACCESS_TOKEN, access_token
+                )
+                    .then(function () {
+                        return t.set('board', 'private', KEY_REFRESH_TOKEN, refresh_token);
+                    })
+                    .then(function () {
+                        return t.set('board', 'private', KEY_EXPIRES_IN, expires_in);
+                    })
+                    .then(function () {
+                        return t.closePopup();
+                    });
+
+
+            }
+
+        };
+
+
+        var width = 525,
+            height = 630,
+            screenTop = !!window.screenTop ? window.screenTop : window.screenY,
+            screenLeft = !!window.screenLeft ? window.screenLeft : window.screenX,
+            top = Math.floor(screenTop + ($(window).height() - height) / 2),
+            left = Math.floor(screenLeft + ($(window).width() - width) / 2);
+
+        var features = [
+            'width=' + width,
+            'height=' + height,
+            'top=' + top,
+            'left=' + left,
+            'status=no',
+            'resizable=yes',
+            'toolbar=no',
+            'menubar=no',
+            'scrollbars=yes'];
+
+        var popup = window.open(window.authUrl, 'oauth', features.join(','));
+
     };
 
 
@@ -304,10 +358,10 @@ var cardButtonCallback = function (t) {
 
             if(token===DEFAULT) { //no token, prompt for auth
                 return t.popup({
-                    title: 'Office PowerPack',
+                    title: 'Authorize',
                     items: [
                         {
-                            text: "Attach OneDrive File",
+                            text: "Connect Microsoft or Office 365 Account",
                             callback: authUser
                         }
                     ]

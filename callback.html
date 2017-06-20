@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://trello.com/power-ups/power-up.css">
+    <script src="https://trello.com/power-ups/power-up.min.js"></script>
+    <!-- jQuery -->
+    <script
+            src="https://code.jquery.com/jquery-2.2.4.min.js"
+            integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+            crossorigin="anonymous"></script>
+</head>
+<body>
+<h1 style="text-align:center">You're set!</h1>
+<p style="text-align:center">This window should close automatically. If it doesn't, go ahead and close it.</p>
+<script>
+
+
+    function queryUrl(name) {
+        var url = window.location.href;
+        console.log(url);
+        name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
+        var regexS = "[\\?&]"+name+"=([^&#]*)";
+        var regex = new RegExp(regexS);
+        var results = regex.exec(url);
+        return results == null ? null : results[1];
+    }
+
+    // extract code=something
+
+    var code = queryUrl('code');
+    console.log(code);
+
+    if(code) {
+        // get access_token, refresh_token with code
+        const authClient = require('./lib/auth-client');
+        authClient.requestAccessToken("AUTH_CODE", code,
+
+            function (responseData) {
+                var accessToken = responseData['access_token'],
+                    refreshToken = responseData['refresh_token'],
+                    expiresIn = responseData['expires_in'];
+                if (accessToken && refreshToken && expiresIn) {
+
+                    // send back to parent
+                    if (window.opener) {
+                        console.log("requestAccessToken with AUTH_CODE called window.opener.authorize");
+                        window.opener.authorize(accessToken, refreshToken, expiresIn);
+                        setTimeout(function () {
+                            window.close();
+                        }, 10000);
+                    }
+                }
+
+                else {
+                    console.log("requestAccessToken with AUTH_CODE failed");
+                }
+            });
+    }
+
+    else {
+        console.log("AUTH_CODE error");
+    }
+
+
+
+
+
+    /*else {
+        localStorage.setItem('token', token);
+    }*/
+    // setTimeout(function(){ window.close(); }, 60000);
+</script>
+</body>
+</html>
